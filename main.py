@@ -112,7 +112,7 @@ class diamonds():
                 print(count)
 
 wizard1 = super_wizard()
-wizard2 = wizard()
+
 diamonds_in_game = diamonds()
 diamonds_in_game.add()
 
@@ -122,17 +122,14 @@ while run:
         count_before_diamand = 0
     draw_level1(window, picture_level1)
     diamonds_in_game.draw(window)
-    wizard2.stand(window)
     wizard1.stand(window)
-
-    # Перший
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_a or event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
             wizard_direction = 'LEFT'
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_d:
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_d or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
             wizard_direction = 'RIGHT'
     if wizard_direction == 'LEFT':
         wizard1.move_left()
@@ -140,24 +137,6 @@ while run:
         wizard1.move_right()
     else:
         wizard1.stand(window)
-
-    # Другий
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-            wizard_direction = 'LEFT'
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-            wizard_direction = 'RIGHT'
-    if wizard_direction == 'LEFT':
-        wizard2.move_left()
-    elif wizard_direction == 'RIGHT':
-        wizard2.move_right()
-    else:
-        wizard2.stand(window)
-
-
 
     pg.display.update()
     count_before_diamand += 1
